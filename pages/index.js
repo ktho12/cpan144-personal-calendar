@@ -1,11 +1,12 @@
 import React from "react";
+import MainContent from "../components/MainContent";
 
 export default function Home() {
   return (
     <main>
       
-      <h2>Welcome to your Personal Calendar</h2>
-
+      
+      <MainContent />
     </main>
   )
 }
