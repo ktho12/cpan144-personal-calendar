@@ -1,7 +1,10 @@
 import styles from "../styles/Main.module.css";
 import { useState, useEffect } from "react";
-
+import { useRouter } from "next/router";
+ 
 export default function MainContent() {
+    const router = useRouter();
+
     const [events, setEvents] = useState([]);
 
     const [formData, setFormData] = useState({
@@ -43,6 +46,10 @@ export default function MainContent() {
             category: "work",
             date: ""
         });
+    }
+
+    const goToCal = () => {
+        router.push("/calendar");
     }
 
     return (
@@ -88,6 +95,9 @@ export default function MainContent() {
                     </li>
             ))}
             </ul>
+            <button onClick={goToCal}>
+                See Calendar
+            </button>
         </div>
     );
 }
