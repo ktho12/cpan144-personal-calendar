@@ -9,7 +9,7 @@ export default function Navbar() {
                     <Link href="/">home</Link>
                 </li>
                 <li>
-                    <Link href="/calendar">calendar</Link>
+                    <Link href="/Calendar">calendar</Link>
                 </li>
                 <li>
                     <Link href="/weather">weather</Link>
