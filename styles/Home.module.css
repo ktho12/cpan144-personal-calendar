@@ -1,0 +1,12 @@
+.homeMain{
+   background-color: #e7f4e5;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+
+.formWrapper{
+    width: 100%;
+    max-width: 700px;
+}
