@@ -5,7 +5,8 @@ export default function CalendarGrid({ events }) {
   
   const today = new Date();
   const year = today.getFullYear();
-  const month = today.getMonth(); 
+  const month = today.getMonth();
+  const monthName = today.toLocaleString("default", { month: "long" });
 
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
@@ -19,7 +20,10 @@ export default function CalendarGrid({ events }) {
   }
 
   return (
-    <div className={styles.calendar}>
+      <div className={styles.calendar}>
+      <div className={styles.monthHeader}>
+            <h2>{monthName} {year}</h2>
+        </div>
       <div className={styles.daysOfWeek}>
         {daysOfWeek.map((day) => (
           <div key={day} className={styles.dayName}>{day}</div>
