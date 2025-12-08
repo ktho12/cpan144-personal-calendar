@@ -49,7 +49,7 @@ export default function MainContent() {
     }
 
     const goToCal = () => {
-        router.push("/calendar");
+        router.push("/Calendar");
     }
 
     return (
