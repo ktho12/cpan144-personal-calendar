@@ -12,7 +12,7 @@ export default function Navbar() {
                     <Link href="/Calendar">calendar</Link>
                 </li>
                 <li>
-                    <Link href="/weather">weather</Link>
+                    <Link href="/Weather">weather</Link>
                 </li>
             </ul>
         </nav>
