@@ -6,6 +6,7 @@ export default function MainContent() {
     const router = useRouter();
 
     const [events, setEvents] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     const [formData, setFormData] = useState({
         title: "",
@@ -14,23 +15,17 @@ export default function MainContent() {
     });
 
     useEffect(() => {
-        try {
-            const saved = localStorage.getItem("events");
-            if (saved) {
-                setEvents(JSON.parse(saved));
-            }
-            } catch (err) {
-                console.error("Failed to load saved events", err);
-            }
+        const saved = localStorage.getItem("events");
+        if (saved) {
+            setEvents(JSON.parse(saved));
+        }
+            setLoaded(true);
     }, []);
 
     useEffect(() => {
-        try {
+        if (!loaded) return;
             localStorage.setItem("events", JSON.stringify(events));
-        } catch (err) {
-            console.error("Save error", err)
-            }
-    }, [events]);
+    }, [events, loaded]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -40,13 +35,16 @@ export default function MainContent() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!formData.title || !formData.date) return;
-        setEvents([...events, formData]);
+
+        const updatedEvents = [...events, formData];
+        setEvents(updatedEvents);
+        localStorage.setItem("events", JSON.stringify(updatedEvents));
         setFormData({
             title: "",
             category: "work",
             date: ""
         });
-    }
+    };
 
     const goToCal = () => {
         router.push("/Calendar");
