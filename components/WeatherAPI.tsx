@@ -29,7 +29,7 @@ export default function WeatherApi() {
 				console.error("Location error: ", err);
 			}
 		);
-	},[]);
+	}, []);
 
 	useEffect(() => {
 		if (!coords) return;
@@ -50,29 +50,40 @@ export default function WeatherApi() {
 			<div className={styles.container}>
 				<p className={styles.loading}>Getting your location...</p>
 			</div>
-	);
+		);
 	}
 
 	if (!weather) {
 		return (
 			<div className={styles.container}>
-				<p className={styles.loading}>Fetching weather...</p>;
+				<p className={styles.loading}>Fetching weather...</p>
 			</div>
 		);
 	}
 
 	return (
 		<div className={styles.container}>
-			<h2 className={styles.title}>Check the Weather</h2>
+			<h2 className={styles.title}>Your 7 Day Forecast</h2>
 			
 			<ul className={styles.list}>
-				{weather.dates.map((date, index) => (
-					<li key={index} className={styles.index}>
-						<span className={styles.date}>{date}</span>
-						<span className={styles.weather}>{weather.tempMax[index]}°C high /{" "}
-						{weather.tempMin[index]}°C</span>
-					</li>
-				))}
+				{weather.dates.map((date, index) => {
+					const d = new Date(date);
+
+					const formattedDate = d.toLocaleDateString("en-US", {
+						weekday: "short",
+						month: "short",
+						day: "numeric",
+					});
+				
+					return (
+						<li key={index} className={styles.dayItem}>
+							<span className={styles.date}>{formattedDate}</span>
+							<span className={styles.weather}>
+								High: {Math.round(weather.tempMax[index])}°C |{" "}
+								Low: {Math.round(weather.tempMin[index])}°C </span>
+						</li>
+					);
+				})}
 			</ul>
 		</div>
 	);
