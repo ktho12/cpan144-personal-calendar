@@ -1,11 +1,43 @@
-
 .container {
     background-color: #a7c0a3ef;
     color: black;
-    padding: 20px;
+    padding: 20px 150px 20px 150px;
     text-align: center;
     max-width: 700px;
-    margin: 60px auto;
+    margin: 30px auto;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: large;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.date {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.dayItem {
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 2px;
+    padding: 5px;
+}
+
+.weather {
+    display: block;
 }
