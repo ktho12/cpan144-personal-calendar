@@ -11,6 +11,7 @@ useEffect(() => {
         setEvents(JSON.parse(saved));
     }
 }, [])
+    
 
 return (
     <div className={styles.background}>
