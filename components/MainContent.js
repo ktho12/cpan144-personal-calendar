@@ -37,8 +37,11 @@ export default function MainContent() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.title || !formData.date) return;
-
+        if (!formData.title || !formData.date) {
+            alert("Please include your event and a date");
+            return;
+        }
+        
         const updatedEvents = [...events, formData];
         setEvents(updatedEvents);
         localStorage.setItem("events", JSON.stringify(updatedEvents));
