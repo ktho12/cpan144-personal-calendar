@@ -32,10 +32,14 @@ export default function CalendarGrid({ events }) {
 
       <div className={styles.daysGrid}>
         {calendarDays.map((day, index) => {
-          const dayEvents = events.filter(
-            (event) => new Date(event.date).getDate() === day &&
-                       new Date(event.date).getMonth() === month
-          );
+          const dayEvents = events.filter((event) => {
+            if (!day) return false;
+
+            const [yearStr, monthStr, dayStr] = event.date.split("-");
+            const eventDay = Number(dayStr);
+            const eventMonth = Number(monthStr) - 1;
+            return eventDay === day && eventMonth === month;
+          });
 
           return (
             <div key={index} className={styles.dayCell}>
