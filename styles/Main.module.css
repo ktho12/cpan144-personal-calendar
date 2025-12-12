@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.main button{
+.calBtn, .addBtn{
     background-color: #d4e6d1;
     color: black;
     border: none;
@@ -54,7 +54,25 @@
     cursor: pointer;
 }
 
-.main button:hover{
+.calBtn:hover{
     background: #e9f3e7;
 }
 
+.addBtn:hover{
+    background: #e9f3e7;
+}
+
+.removeBtn{
+    background-color: #d4e6d1;
+    color: black;
+    border: none;
+
+    margin-left: 20px;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 8px;
+    align-self: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
