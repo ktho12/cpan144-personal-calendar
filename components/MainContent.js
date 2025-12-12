@@ -7,6 +7,9 @@ export default function MainContent() {
 
     const [events, setEvents] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const removeEvent = (indexToRemove) => {
+        setEvents(events.filter((_, index) => index !== indexToRemove));
+    };
 
     const [formData, setFormData] = useState({
         title: "",
@@ -81,7 +84,7 @@ export default function MainContent() {
                     onChange={handleChange}
                 />
 
-                <button type="submit">Add Event</button>
+                <button type="submit" className={styles.addBtn}>Add Event</button>
 
             </form>
 
@@ -90,10 +93,14 @@ export default function MainContent() {
                 {events.map((event, index) => (
                     <li key={index}>
                         {event.title} - {event.category} - {event.date}
+                    
+                        <button onClick={() => removeEvent(index)} className={styles.removeBtn}>
+                            Remove Event</button>
                     </li>
             ))}
             </ul>
-            <button onClick={goToCal}>
+
+            <button onClick={goToCal} className={styles.calBtn}>
                 See Calendar
             </button>
         </div>
