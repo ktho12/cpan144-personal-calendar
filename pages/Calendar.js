@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CalendarGrid from "../components/CalendarGrid";
+import styles from "../styles/Calendar.module.css";
 
 export default function Calendar() {
     const [events, setEvents] = useState([]);
@@ -12,7 +13,7 @@ useEffect(() => {
 }, [])
 
 return (
-    <div>
+    <div className={styles.background}>
         <CalendarGrid events={events} />
     </div>
 );
